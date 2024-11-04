@@ -1,20 +1,25 @@
 <template>
   <div>
-    <EmpleadosDetalle/>
+    <MenuComponent/>
+    <div class="cb"></div>
+    <router-view></router-view>
+    <!-- <EmpleadosDetalle/> -->
     <!-- <CustomersComponent/> -->
     <!-- <CochesComponent/> -->
   </div>
 </template>
 
 <script>
-import EmpleadosDetalle from './components/EmpleadosDetalle.vue'
+import MenuComponent from './components/MenuComponent.vue'
+// import EmpleadosDetalle from './components/EmpleadosDetalle.vue'
 // import CustomersComponent from './components/CustomersComponent.vue'
 // import CochesComponent from './components/CochesComponent.vue'
 
 export default {
   name: 'App',
   components: {
-    EmpleadosDetalle
+    MenuComponent
+    // EmpleadosDetalle
     // CustomersComponent
     // CochesComponent
   }
@@ -54,5 +59,8 @@ body {
 h1 {
   margin-top: 0;
   padding-top: 20px;
+}
+.cb {
+  clear: both;
 }
 </style>

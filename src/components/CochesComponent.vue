@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <h1>Servicios Api Coches</h1>
         <div v-if="!status" class="terminal-loader">
             <div class="terminal-header">
@@ -42,8 +42,8 @@
 </template>
 
 <script>
-    import axios from 'axios';
-    import Global from './../Global'
+import ServiceCoches from './../services/ServiceCoches'
+    const service = new ServiceCoches();
     //SI NECESITAMOS VARIABLES DECLARADAS PARA UTILIZAR EN LOS
     //METODOS (mounted, created, methods) LAS DECLARAMOS AQUI
     // let urlApiCoches = "https://apicochespaco.azurewebsites.net/";
@@ -57,15 +57,10 @@
             }
         },
         mounted() {
-            let request = "/webresources/coches";
-
-            //LAS VARIABLES DECLARADAS POR ENCIMA DE export default
-            //NO UTILIZAN LA PALABRA this
-            let url = Global.urlApiCoches + request;
-            axios.get(url).then(response => {
-                console.log("Leyendo servicio..");
-                this.coches = response.data;
-                this.status = true
+          //UNA PROMESA NO ES UN METODO, ES UN OBJETO
+            service.getCoches.then(result => {
+              this.coches = result;
+              this.status = true;
             })
         }
     }
